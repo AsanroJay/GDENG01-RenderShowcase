@@ -47307,7 +47307,7 @@ GameObject:
   - component: {fileID: 4794246705957800266}
   - component: {fileID: 3762483332310727788}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: furnacePointLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
