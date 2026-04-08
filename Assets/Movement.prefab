@@ -218,6 +218,7 @@ MonoBehaviour:
   actionMapName: Player
   move: Move
   rotation: Rotation
+  jump: Jump
 --- !u!1 &5500547342134479189
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,9 +267,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f007cfd6ffe59e45be91702e956578f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonController
-  walkSpeed: 25
+  walkSpeed: 10
   mouseSensitivity: 0.1
   upDownRange: 80
+  jumpForce: 5
+  gravity: 1
   characterController: {fileID: 5959135074484417318}
   mainCamera: {fileID: 254892700309153384}
   playerInput: {fileID: 4128511838126263658}

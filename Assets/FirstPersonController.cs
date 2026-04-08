@@ -8,6 +8,9 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float mouseSensitivity = 0.1f;
     [SerializeField] private float upDownRange = 80f;
 
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float gravity = 1f;
+
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private AvatarMove playerInput;
@@ -35,13 +38,31 @@ public class FirstPersonController : MonoBehaviour
         Vector3 worldDirection = transform.TransformDirection(inputDirection);
         return worldDirection.normalized;
     }
+    private void HandleJumping()
+    {
+        if (characterController.isGrounded)
+        {
+            currentMovement.y = -0.5f;
+
+            if (playerInput.JumpTriggered)
+            {
+                currentMovement.y = jumpForce;
+            }
+        }
+        else
+        {
+            currentMovement.y += Physics.gravity.y * gravity * Time.deltaTime;
+        }
+    }
+
 
     private void HandleMovement()
     {
         Vector3 worldDirection = CalculateWorldDirection();
         currentMovement.x = worldDirection.x * walkSpeed;
-        currentMovement.z = worldDirection.z * walkSpeed;   
+        currentMovement.z = worldDirection.z * walkSpeed;
 
+        HandleJumping();
         characterController.Move(currentMovement * Time.deltaTime);
     }
 
